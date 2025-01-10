@@ -453,11 +453,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repositorios\\API-Bank\\API-Bank\\API-Bank.csproj",
+      "projectUniqueName": "D:\\repositorios\\teste-tecnico\\API-Bank\\API-Bank\\API-Bank.csproj",
       "projectName": "API-Bank",
-      "projectPath": "D:\\repositorios\\API-Bank\\API-Bank\\API-Bank.csproj",
+      "projectPath": "D:\\repositorios\\teste-tecnico\\API-Bank\\API-Bank\\API-Bank.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\repositorios\\API-Bank\\API-Bank\\obj\\",
+      "outputPath": "D:\\repositorios\\teste-tecnico\\API-Bank\\API-Bank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
