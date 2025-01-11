@@ -10,6 +10,12 @@ API-Bank/*.user
 API-Bank/*.userosscache
 API-Bank/*.sln.docstates
 
+API-Bank/bin/
+API-Bank/obj/
+API-Bank/runtimes/
+API-Bank/.vs/
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 API-Bank/*.userprefs
 
