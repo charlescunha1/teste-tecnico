@@ -39,14 +39,7 @@ docker compose build
 docker compose up -d
 ```
 
-3. Execute os seguintes comandos para restaurar as dependências e iniciar a API do c#:
+3. Acesse a API do C# usando o swagger em http://localhost:5000/swagger/index.html
 
-```
-dotnet restore
-dotnet run
-```
-
-4. Acesse a API do C# usando o swagger em http://localhost:5000/swagger/index.html
-
-5. Acesse a API do java em http://localhost:8080/api/v1/transactions
+4. Acesse a API do java em http://localhost:8080/api/v1/transactions
 
