@@ -1,9 +1,12 @@
 using API_Bank.Application.AppService;
+using API_Bank.Application.AutoMapper;
 using API_Bank.Application.Interface;
+using API_Bank.Domain.IRepository;
 using API_Bank.Infra.Data.Context;
 using API_Bank.Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +17,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBankAccountAppService, BankAccountAppService>();
-builder.Services.AddScoped<BankAccountRepository>();
+builder.Services.AddScoped<IBalanceAppService, BalanceAppService>();
+builder.Services.AddScoped<IBankAccountRepository ,BankAccountRepository>();
+builder.Services.AddScoped<IBalanceRepository , BalanceRepository>();
+builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
 // Configuração do DbContext para usar o Pomelo MySQL
 
 builder.Services.AddDbContext<BankAccountContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                     new MySqlServerVersion(new Version(8, 0, 23))));
+//builder.Services.AddDbContext<BankAccountContext>(options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

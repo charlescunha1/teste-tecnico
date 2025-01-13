@@ -1,5 +1,6 @@
 ﻿using API_Bank.Application.Interface;
 using API_Bank.Application.ViewModel;
+using API_Bank.Domain.Entities;
 using API_Bank.Domain.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,18 +13,23 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
     [Route("CreateBankAccount")]
     public IActionResult CreateBankAccount([FromBody] CreateBankAccountViewModel createBankAccountViewModel)
     {
+        // Verifique se o modelo é válido
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
         return ExecuteAction(() =>
         {
             var accountBank = bankAccountAppService.CreateBankAccount(createBankAccountViewModel);
-            return CreatedAtAction(nameof(GetAccountBankById), new { id = accountBank.Id }, accountBank);
+            return Ok(accountBank);
 
         });
     }
 
     [HttpGet]
-    [Route("GetAccountBankById")]
+    [Route("GetBankAccountById/{id}")]
 
-    public IActionResult GetAccountBankById(int id)
+    public IActionResult GetBankAccountById(int id)
     {
         return ExecuteAction(() =>
         {
@@ -33,8 +39,20 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
     }
 
     [HttpGet]
-    [Route("GetByNumber/{number}")]
-    public IActionResult GetByNumber(string number)
+    [Route("GetBankAccountBalance/{holderNumber}")]
+
+    public IActionResult GetBankAccountBalance(string holderNumber)
+    {
+        return ExecuteAction(() =>
+        {
+            var balances = bankAccountAppService.GetBankAccountBalance(holderNumber);
+            return Ok(balances);
+        });
+    }
+
+    [HttpGet]
+    [Route("GetBankAccountByNumber/{number}")]
+    public IActionResult GetBankAccountByNumber(string number)
     {
         return ExecuteAction(() =>
         {
@@ -66,13 +84,13 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
     }
 
     [HttpPatch]
-    [Route("UpdateEmailByHolderName/{holderName}")]
-    public IActionResult UpdateEmailByHolderName(string holderName, [FromBody] string holderEmail)
+    [Route("UpdateEmailByHolderName/{number}")]
+    public IActionResult UpdateEmailByNumber(string number, [FromBody] string holderEmail)
     {
         return ExecuteAction(() =>
         {
-            var updatedEmail = bankAccountAppService.UpdateEmailByHolderName(holderName, holderEmail);
-            return Ok(updatedEmail);
+            bankAccountAppService.UpdateEmailByNumber(number, holderEmail);
+            return Ok("Email atualizado com sucesso !");
         });
     }
 
@@ -82,8 +100,8 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
     {
         return ExecuteAction(() =>
         {
-            var updatedStatus = bankAccountAppService.UpdateStatusByNumber(number, status);
-            return Ok(updatedStatus);
+            bankAccountAppService.UpdateStatusByNumber(number, status);
+            return Ok("Status atualizado com sucesso !");
         });
     }
 
@@ -100,7 +118,7 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
 
     [HttpPost]
     [Route("BlockAmountFromAccount/{number}")]
-    public IActionResult BlockAmountFromAccount(string number, [FromBody] double amount)
+    public IActionResult BlockAmountFromAccount(string number, [FromBody] decimal amount)
     {
         return ExecuteAction(() =>
         {
@@ -111,7 +129,7 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
 
     [HttpPost]
     [Route("UnblockAmountFromAccount/{number}")]
-    public IActionResult UnblockAmountFromAccount(string number, [FromBody] double amount)
+    public IActionResult UnblockAmountFromAccount(string number, [FromBody] decimal amount)
     {
         return ExecuteAction(() =>
         {
@@ -122,7 +140,7 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
 
     [HttpPost]
     [Route("DepositToAccount/{number}")]
-    public IActionResult DepositToAccount(string number, [FromBody] double amount)
+    public IActionResult DepositToAccount(string number, [FromBody] decimal amount)
     {
         return ExecuteAction(() =>
         {
@@ -133,12 +151,27 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
 
     [HttpPost]
     [Route("DebitAccount/{number}")]
-    public IActionResult DebitAccount(string number, [FromBody] double amount)
+    public IActionResult DebitAccount(string number, [FromBody] decimal amount)
     {
         return ExecuteAction(() =>
         {
             bankAccountAppService.DebitAccount(number, amount);
             return Ok($"Quantia de {amount} foi debitada da conta com número {number}.");
+        });
+    }
+
+
+
+
+
+
+    [HttpGet("/balance/{id}")]
+    public IActionResult GetBalance(int id)
+    {
+        return ExecuteAction(() =>
+        {
+            var balance = bankAccountAppService.GetBalance(id);
+            return Ok(balance);
         });
     }
 }

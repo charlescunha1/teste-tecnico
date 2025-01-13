@@ -8,7 +8,7 @@ public class BankAccountMap : IEntityTypeConfiguration<BankAccount>
 {
     public void Configure(EntityTypeBuilder<BankAccount> builder)
     {
-        builder.HasKey(prop => prop.Id);
+        builder.HasKey(prop => prop.BankAccountId);
 
         builder.Property(prop => prop.Branch)
             .IsRequired()
@@ -49,6 +49,10 @@ public class BankAccountMap : IEntityTypeConfiguration<BankAccount>
         builder.Property(prop => prop.UpdatedAt)
             .IsRequired()
             .HasColumnName("BaA_UpdatedAt");
+
+        builder.HasOne(prop => prop.Balance)
+            .WithOne(prop => prop.BankAccount)
+            .HasForeignKey<Balance>(prop => prop.BankAccountId);
 
 
         builder.ToTable("BaA_BankAccount");

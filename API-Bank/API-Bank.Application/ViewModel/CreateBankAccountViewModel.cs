@@ -1,29 +1,19 @@
 ﻿using API_Bank.Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace API_Bank.Application.ViewModel;
 
 public class CreateBankAccountViewModel
 {
-    public string Branch { get; set; } //
-    public string? Number { get; set; }
-    public AccountType Type { get; set; }//
-    public string HolderName { get; set; }//
-    public string HolderEmail { get; set; }//
-    public string HolderDocument { get; set; }//
-    public HolderType HolderType { get; set; }//
-    public Status? Status { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    public DateTime UpdatedAt { get; set; } = DateTime.Now;
-
-    //public string Agencia { get; set; }          // Branch
-    //public string Numero { get; set; }           // Number
-    //public TipoConta Tipo { get; set; }          // AccountType
-    //public string NomeTitular { get; set; }      // HolderName
-    //public string EmailTitular { get; set; }     // HolderEmail
-    //public string DocumentoTitular { get; set; } // HolderDocument
-    //public TipoTitular TipoTitular { get; set; } // HolderType
-    //public Status Status { get; set; }           // Status
-    //public DateTime CriadoEm { get; set; }       // CreatedAt
-    //public DateTime AtualizadoEm { get; set; }   // UpdatedAt
-
+    [StringLength(5, MinimumLength = 1, ErrorMessage = "O número da agência deve ter entre 1 e 5 caracteres.")]
+    public string Branch { get; set; } 
+    public AccountType Type { get; set; }
+    [StringLength(200, MinimumLength = 2, ErrorMessage = "O nome do titular deve ter entre 2 e 200 caracteres.")]
+    public string HolderName { get; set; }
+    [EmailAddress]
+    [StringLength(200, MinimumLength = 2, ErrorMessage = "O nome do titular deve ter entre 2 e 200 caracteres.")]
+    public string HolderEmail { get; set; }
+    public string HolderDocument { get; set; }
+    [Required]
+    public HolderType HolderType { get; set; }
 }

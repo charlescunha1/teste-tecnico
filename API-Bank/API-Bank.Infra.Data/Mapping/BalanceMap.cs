@@ -8,7 +8,7 @@ public class BalanceMap : IEntityTypeConfiguration<Balance>
 {
     public void Configure(EntityTypeBuilder<Balance> builder)
     {
-        builder.HasKey(prop => prop.Id);
+        builder.HasKey(prop => prop.BalanceId);
 
         builder.Property(prop => prop.BankAccountId)
                .IsRequired()

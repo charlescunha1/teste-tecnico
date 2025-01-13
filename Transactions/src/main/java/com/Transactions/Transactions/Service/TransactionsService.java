@@ -1,10 +1,14 @@
 package com.Transactions.Transactions.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import com.Transactions.Transactions.Dto.TransactionDto;
 import com.Transactions.Transactions.Dto.TransactionsCreationDto;
 import com.Transactions.Transactions.Entity.Transactions;
@@ -29,13 +33,14 @@ public class TransactionsService {
                 .fromEntity(transactionsRepository.findById(id).orElseThrow(TransactionNotFoundException::new));
     }
 
-    public List<TransactionDto> listTransactionsByBankAccountEndBanckCode(String counterpartyAccountNumber, String counterpartyBankCode) {
+    public List<TransactionDto> listTransactionsByBankAccountEndBanckCode(String counterpartyAccountNumber,
+            String counterpartyBankCode) {
         return transactionsRepository.findByCounterpartyAccountNumberAndCounterpartyBankCode(counterpartyAccountNumber,
                 counterpartyBankCode)
                 .stream()
                 .map(TransactionDto::fromEntity)
                 .collect(Collectors
-                .toList());
+                        .toList());
     }
 
     public List<TransactionDto> listAllTransactions(Optional<Type> type, Optional<LocalDateTime> createdAt) {
@@ -43,7 +48,7 @@ public class TransactionsService {
                 .stream()
                 .map(TransactionDto::fromEntity)
                 .collect(Collectors
-                .toList());
+                        .toList());
     }
 
     private List<Transactions> getTransactionsSortedByDate(Optional<Type> type, Optional<LocalDateTime> createdAt) {

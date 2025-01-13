@@ -15,6 +15,12 @@ API-Bank/obj/
 API-Bank/runtimes/
 API-Bank/.vs/
 
+API-Bank/API-Bank.Application/obj
+API-Bank/API-Bank.Application/bin
+API-Bank/API-Bank.Domain/obj
+API-Bank/API-Bank.Domain/bin
+API-Bank/API-Bank.Infra.Data/bin
+API-Bank/API-Bank.Infra.Data/obj
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 API-Bank/*.userprefs

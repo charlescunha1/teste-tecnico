@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\API-Bank.Application\API-Bank.Application.csproj" />
     <ProjectReference Include="..\API-Bank.Domain\API-Bank.Domain.csproj" />
   </ItemGroup>
 

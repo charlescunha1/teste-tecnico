@@ -1,5 +1,6 @@
 package com.Transactions.Transactions.Dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import com.Transactions.Transactions.Entity.Transactions;
 import com.Transactions.Transactions.Enum.CounterpartyAccountType;

@@ -6,30 +6,30 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - mysql
-    networks:
-      - app-network
+      mysql:
+        condition: service_healthy
+    network_mode: host
 
   mysql:
     image: mysql:8.0.32
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-    networks:
-      - app-network
+    network_mode: host
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--host=127.0.0.1", "--user=root", "--password=root"]
+      interval: 30s
+      retries: 5
+      timeout: 10s
+      start_period: 30s
 
   api_dotnet:
     build:
       context: .
-      dockerfile: API-Bank/Dockerfile
+      dockerfile: API-Bank/API-Bank/Dockerfile
     ports:
       - "5000:8080"
     depends_on:
-      - mysql
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      mysql:
+        condition: service_healthy
+    network_mode: host
+    entrypoint: ["sh", "-c", "cd src/API-Bank.Infra.Data/ && dotnet ef database update && cd .. && cd .. && dotnet API-Bank.dll"]
