@@ -21,7 +21,7 @@ As Migrations são geradas automaticamente ao estartar o container.
 
 * [.NET 8 SDK](https://dotnet.microsoft.com/pt-br/download/).
 * MySQL
-* Docker desktop
+* Docker e Docker compose
 
 
 ## Configuração
