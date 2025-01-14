@@ -14,10 +14,11 @@ public interface IBankAccountAppService
     void UpdateEmailByNumber(string number, string holderEmail);
     void UpdateStatusByNumber(string number, Status status);
     void CloseBankAccount(string number);
-    void DepositToAccount(string number, decimal amount);
+    void DepositToAccount(string number, AmountViewModel amountViewModel);
     void DebitAccount(string number, decimal amount);
     void BlockAmountFromAccount(string number, decimal amount);
     void UnblockAmountFromAccount(string number, decimal amount);
     BalanceViewModel GetBankAccountBalance(string holderNumber);
     BalanceViewModel GetBalance(int id);
+    void DebitAccountById(int id, AmountViewModel amountViewModel);
 }

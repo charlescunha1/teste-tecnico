@@ -15,7 +15,7 @@ public class Transactions {
     private int id;
 
     private Type type;
-    private Double amount;
+    private BigDecimal amount;
     private int bankAccountId;
     private String counterpartyBankCode;
     private String counterpartyBankName;
@@ -31,7 +31,7 @@ public class Transactions {
     public Transactions() {
     }
 
-    public Transactions(Type type, Double amount, int bankAccountId, String counterpartyBankCode,
+    public Transactions(Type type, BigDecimal amount, int bankAccountId, String counterpartyBankCode,
             String counterpartyBankName, String counterpartyBranch, String counterpartyAccountNumber,
             CounterpartyAccountType counterpartyAccountType, String counterpartyHolderName,
             CounterpartyHolderType counterpartyHolderType, String counterpartyHolderDocument, LocalDateTime createdAt,
@@ -60,7 +60,7 @@ public class Transactions {
         return type;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -116,7 +116,7 @@ public class Transactions {
         this.type = type;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

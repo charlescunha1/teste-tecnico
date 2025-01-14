@@ -30,7 +30,8 @@ public class TransactionsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TransactionDto saveTransaction(@RequestBody TransactionsCreationDto transactionsCreationDto) {
+    public TransactionDto saveTransaction(@RequestBody TransactionsCreationDto transactionsCreationDto)
+            throws Exception {
         return transactionsService.saveTransaction(transactionsCreationDto);
     }
 
@@ -44,8 +45,7 @@ public class TransactionsController {
     @ResponseStatus(HttpStatus.OK)
     public List<TransactionDto> listAllTransactions(
             @RequestParam(required = false) Type type,
-            @RequestParam(required = false) 
-            @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime createdAt) {
+            @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime createdAt) {
         return transactionsService.listAllTransactions(Optional.ofNullable(type), Optional.ofNullable(createdAt));
     }
 

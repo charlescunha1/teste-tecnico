@@ -1,0 +1,282 @@
+[
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "BlockAmountFromAccount",
+    "RelativePath": "api/BankAccounts/BlockAmountFromAccount/{number}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "CloseBankAccount",
+    "RelativePath": "api/BankAccounts/CloseBankAccount/{number}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "CreateBankAccount",
+    "RelativePath": "api/BankAccounts/CreateBankAccount",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createBankAccountViewModel",
+        "Type": "API_Bank.Application.ViewModel.CreateBankAccountViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "DebitAccount",
+    "RelativePath": "api/BankAccounts/DebitAccount/{number}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "DebitAccount",
+    "RelativePath": "api/BankAccounts/DebitAccountById/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "amountViewModel",
+        "Type": "API_Bank.Application.ViewModel.AmountViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "DepositToAccount",
+    "RelativePath": "api/BankAccounts/DepositToAccount/{number}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "amountViewModel",
+        "Type": "API_Bank.Application.ViewModel.AmountViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "GetBankAccountBalance",
+    "RelativePath": "api/BankAccounts/GetBankAccountBalance/{holderNumber}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "holderNumber",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "GetBankAccountById",
+    "RelativePath": "api/BankAccounts/GetBankAccountById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "GetBankAccountByNumber",
+    "RelativePath": "api/BankAccounts/GetBankAccountByNumber/{number}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "ListBankAccountsByBranch",
+    "RelativePath": "api/BankAccounts/ListBankAccountsByBranch/{branch}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "branch",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "ListBankAccountsByHolderName",
+    "RelativePath": "api/BankAccounts/ListBankAccountsByHolderName/{holderName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "holderName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "UnblockAmountFromAccount",
+    "RelativePath": "api/BankAccounts/UnblockAmountFromAccount/{number}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "amount",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "UpdateEmailByNumber",
+    "RelativePath": "api/BankAccounts/UpdateEmailByHolderName/{number}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "holderEmail",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.BankAccountController",
+    "Method": "UpdateStatusByNumber",
+    "RelativePath": "api/BankAccounts/UpdateStatusByNumber/{number}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "number",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Bank.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[API_Bank.WeatherForecast, API-Bank, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

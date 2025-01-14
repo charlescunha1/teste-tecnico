@@ -22,11 +22,11 @@ public class BankAccountAppService : IBankAccountAppService
         _mapper = mapper;
     }
 
-    public void DepositToAccount(string number, decimal amount)
+    public void DepositToAccount(string number, AmountViewModel amountViewModel)
     {
-        IsValidAmount(amount);
+        IsValidAmount(amountViewModel.Amount);
         var bankAccount = ValidateBankAccountNumber(number);
-        bankAccount.Balance.AvailableAmount += amount;
+        bankAccount.Balance.AvailableAmount += amountViewModel.Amount;
         _balanceAppService.UpdateBalance(bankAccount.Balance);
     }
 
@@ -186,5 +186,19 @@ public class BankAccountAppService : IBankAccountAppService
     {
         var balance = _balanceAppService.GetBankAccountBalance(id);
         return _mapper.Map<BalanceViewModel>(balance);
+    }
+
+    public void DebitAccountById(int id, AmountViewModel amountViewModel)
+    {
+        IsValidAmount(amountViewModel.Amount);
+        var bankAccount = _bankAccountRepository.GetById(id);
+        if (bankAccount.Status != Status.ACTIVE)
+        {
+            throw new Exception($"Não é possível realizar essa operação pois a conta está {bankAccount.Status}");
+        }
+
+        ValidateAmount(bankAccount!.Balance, amountViewModel.Amount);
+        bankAccount.Balance.AvailableAmount -= amountViewModel.Amount;
+        _balanceAppService.UpdateBalance(bankAccount.Balance);
     }
 }

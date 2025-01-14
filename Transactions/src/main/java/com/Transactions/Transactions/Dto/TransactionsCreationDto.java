@@ -9,7 +9,7 @@ import com.Transactions.Transactions.Enum.Type;
 
 public record TransactionsCreationDto(
         Type type,
-        Double amount,
+        BigDecimal amount,
         int bankAccountId,
         String counterpartyBankCode,
         String counterpartyBankName,

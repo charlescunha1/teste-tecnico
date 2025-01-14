@@ -1,5 +1,6 @@
 package com.Transactions.Transactions.Dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import com.Transactions.Transactions.Entity.Transactions;
 import com.Transactions.Transactions.Enum.CounterpartyAccountType;
@@ -9,7 +10,7 @@ import com.Transactions.Transactions.Enum.Type;
 public record TransactionDto(
         int id,
         Type type,
-        Double amount,
+        BigDecimal amount,
         int bankAccountId,
         String counterpartyBankCode,
         String counterpartyBankName,

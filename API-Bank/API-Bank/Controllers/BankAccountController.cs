@@ -140,12 +140,12 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
 
     [HttpPost]
     [Route("DepositToAccount/{number}")]
-    public IActionResult DepositToAccount(string number, [FromBody] decimal amount)
+    public IActionResult DepositToAccount(string number, [FromBody] AmountViewModel amountViewModel)
     {
         return ExecuteAction(() =>
         {
-            bankAccountAppService.DepositToAccount(number, amount);
-            return Ok($"Quantia de {amount} foi depositada na conta com número {number}.");
+            bankAccountAppService.DepositToAccount(number, amountViewModel);
+            return Ok($"Quantia de {amountViewModel.Amount} foi depositada na conta com número {number}.");
         });
     }
 
@@ -160,19 +160,28 @@ public class BankAccountController(IBankAccountAppService bankAccountAppService)
         });
     }
 
-
-
-
-
-
-    [HttpGet("/balance/{id}")]
-    public IActionResult GetBalance(int id)
+    [HttpPost]
+    [Route("DebitAccountById/{id}")]
+    public IActionResult DebitAccount(int id, [FromBody] AmountViewModel amountViewModel)
     {
         return ExecuteAction(() =>
         {
-            var balance = bankAccountAppService.GetBalance(id);
-            return Ok(balance);
+            bankAccountAppService.DebitAccountById(id, amountViewModel);
+            return Ok($"Quantia de {amountViewModel.Amount} foi debitada da conta com id {id}.");
         });
     }
+
+
+
+
+    //[HttpGet("/balance/{id}")]
+    //public IActionResult GetBalance(int id)
+    //{
+    //    return ExecuteAction(() =>
+    //    {
+    //        var balance = bankAccountAppService.GetBalance(id);
+    //        return Ok(balance);
+    //    });
+    //}
 }
 
