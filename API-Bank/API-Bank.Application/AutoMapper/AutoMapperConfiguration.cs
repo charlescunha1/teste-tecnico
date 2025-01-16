@@ -12,6 +12,7 @@ public class AutoMapperConfiguration : Profile
         //ViewModelToDomain
         CreateMap<CreateBankAccountViewModel, BankAccount>()
         .ForMember(dst => dst.CreatedAt,opts => opts.MapFrom(src => DateTime.Now))
+        //.ForMember(dst => dst.Type, opts => opts.MapFrom(src => src.Type.ToString()))
         .ForMember(dst => dst.UpdatedAt,opts => opts.MapFrom(src => DateTime.Now))
         .ForMember(dst => dst.Status,opts => opts.MapFrom(src => Status.ACTIVE));
 

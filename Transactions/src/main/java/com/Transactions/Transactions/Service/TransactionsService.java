@@ -92,7 +92,7 @@ public class TransactionsService {
         return false;
     }
 
-    public boolean creditAccountByNumber(TransactionsCreationDto transactionsCreationDto) throws Exception {
+    public boolean creditAccountByNumber(TransactionsCreationDto transactionsCreationDto) {
 
         String apiUrl = ApiEndpoints.CREDIT_ACCOUNT_BY_NUMBER.replace("{number}",
                 String.valueOf(transactionsCreationDto.counterpartyAccountNumber()));

@@ -90,6 +90,7 @@ public class BankAccountAppService : IBankAccountAppService
     public BankAccountsViewModel GetById(int id)
     {
         var bankAccount = _bankAccountRepository.GetById(id);
+        if (bankAccount == null) throw new Exception("Conta bancária não encontrada");
         return _mapper.Map<BankAccountsViewModel>(bankAccount);
     }
 
